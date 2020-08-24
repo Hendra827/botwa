@@ -156,7 +156,7 @@ async function msgHandler (client, message) {
             await tiktok(url)
                 .then((videoMeta) => {
                     const filename = videoMeta.authorMeta.name + '.mp4'
-                    const caps = `*Metadata:*\nUsername: ${videoMeta.authorMeta.name} \nMusic: ${videoMeta.musicMeta.musicName} \nView: ${videoMeta.playCount.toLocaleString()} \nLike: ${videoMeta.diggCount.toLocaleString()} \nComment: ${videoMeta.commentCount.toLocaleString()} \nShare: ${videoMeta.shareCount.toLocaleString()} \nCaption: ${videoMeta.text.trim() ? videoMeta.text : '-'} \n\nDonasi: kamu dapat membantuku beli dimsum dengan menyawer melalui https://saweria.co/donate/yogasakti atau mentrakteer melalui https://trakteer.id/red-emperor \nTerimakasih.`
+                    const caps = `*Metadata:*\nUsername: ${videoMeta.authorMeta.name} \nMusic: ${videoMeta.musicMeta.musicName} \nView: ${videoMeta.playCount.toLocaleString()} \nLike: ${videoMeta.diggCount.toLocaleString()} \nComment: ${videoMeta.commentCount.toLocaleString()} \nShare: ${videoMeta.shareCount.toLocaleString()} \nCaption: ${videoMeta.text.trim() ? videoMeta.text : '-'} \n\nDonasi: 081246114524 dana/gopay/pulsa \nTerimakasih.`
                     client.sendFileFromUrl(from, videoMeta.url, filename, videoMeta.NoWaterMark ? caps : `⚠ Video tanpa watermark tidak tersedia. \n\n${caps}`, '', { headers: { 'User-Agent': 'okhttp/4.5.0' } })
                         .catch(err => console.log('Caught exception: ', err))
                 }).catch(() => {
@@ -182,7 +182,7 @@ async function msgHandler (client, message) {
                                 client.sendText(from, 'Error, ' + err)
                             })
                     }
-                    client.sendText(from, `Link Download:\n${content.join('\n')} \n\nDonasi: kamu dapat membantuku beli dimsum dengan menyawer melalui https://saweria.co/donate/yogasakti atau mentrakteer melalui https://trakteer.id/red-emperor \nTerimakasih.`)
+                    client.sendText(from, `Link Download:\n${content.join('\n')} \n\nDonasi: 081246114524 dana/gopay/pulsa \nTerimakasih.`)
                 }).catch((err) => {
                     if (err == 'Not a video') return client.reply(from, 'Error, tidak ada video di link yang kamu kirim', id)
                     client.reply(from, 'Error, user private atau link salah', id)
@@ -202,7 +202,7 @@ async function msgHandler (client, message) {
                             const content = videoMeta.variants.filter(x => x.content_type !== 'application/x-mpegURL').sort((a, b) => b.bitrate - a.bitrate)
                             const result = await urlShortener(content[0].url)
                             console.log('Shortlink: ' + result)
-                            client.sendFileFromUrl(from, content[0].url, 'TwitterVideo.mp4', `Link Download: ${result} \n\nDonasi: kamu dapat membantuku beli dimsum dengan menyawer melalui https://saweria.co/donate/yogasakti atau mentrakteer melalui https://trakteer.id/red-emperor \nTerimakasih.`)
+                            client.sendFileFromUrl(from, content[0].url, 'TwitterVideo.mp4', `Link Download: ${result} \n\nDonasi: 081246114524 dana/gopay/pulsa \nTerimakasih.`)
                         } else if (videoMeta.type == 'photo') {
                             for (let i = 0; i < videoMeta.variants.length; i++) {
                                 await client.sendFileFromUrl(from, videoMeta.variants[i], videoMeta.variants[i].split('/media/')[1], '')
@@ -236,7 +236,7 @@ async function msgHandler (client, message) {
                             shorts.push(links[i])
                         }
                         const link = shorts.map((x) => `${x.resolution} Quality: ${x.short}`)
-                        const caption = `Text: ${title} \nLink Download: \n${link.join('\n')} \n\nDonasi: kamu dapat membantuku beli dimsum dengan menyawer melalui https://saweria.co/donate/yogasakti atau mentrakteer melalui https://trakteer.id/red-emperor \nTerimakasih.`
+                        const caption = `Text: ${title} \nLink Download: \n${link.join('\n')} \n\nDonasi: 081246114524 dana/gopay/pulsa \nTerimakasih.`
                         client.sendFileFromUrl(from, thumbnail, 'videos.jpg', caption)
                     } catch (err) {
                         client.reply(from, 'Error, ' + err, id)
