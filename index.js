@@ -82,11 +82,11 @@ async function msgHandler (client, message) {
 
         switch (command) {
         case 'tnc':
-            client.sendText(from, 'This bot is an open-source program written in Javascript. \n\nBy using the bot you agreeing to our Terms and Conditions! \nWe do not store any of your data in our servers. We are not responsible for stickers that you create using bots, videos, images or other data that you get from this bot.')
+            client.sendText(from, 'gunakan dengan bijak')
             break
         case 'menu':
         case 'help': {
-            const text = `Hi, ${pushname}! 👋️ \n\nUsable Commands!✨\n\n*Sticker Creator*\nCMD: #sticker\nDescription: Converts image into sticker, kirim gambar dengan caption #sticker atau balas gambar yang sudah dikirim dengan #sticker\n\nCMD: #sticker <url gambar>\nDescription: Converts image url into sticker\n\n*Gif Sticker*\nCMD : #gif Giphy URL\nDescription: Convert gif to sticker (but giphy only)\n\n*Downloader*\nCMD: #tiktok <post/video url>\nDescription: Return a Tiktok video\n\nCMD: #fb <post/video url>\nDescription: Return a Facebook video download link\n\nCMD: #ig <post/video url>\nDescription: Return a Instagram video download link\n\nCMD: #twt <post/video url>\nDescription: Return a Twitter video download link\n\n*Other*\nCMD: #tnc\nDescription: show the Terms and Conditions\n\nHope you have a great day!✨`
+            const text = `Hi, ${pushname}! 👋️ \n\nMenu!✨\n\n*Sticker Creator*\n#sticker\nDescription: kirim gambar dengan caption #sticker atau balas gambar yang sudah dikirim dengan #sticker\n\n#sticker <url gambar>\nDescription: Ubah gambar jadi stiker dengan link URL \n\n*Gif Sticker*\n#gif Giphy URL\nDescription: ubah gif menjadi stiker(but giphy only)\n\n*Downloader*\n#tiktok <post/video url>\nDescription: download video tiktok\n\n#fb <post/video url>\nDescription: download video Facebook\n\n#ig <post/video url>\nDescription: download gambar/video Instagram(maintenance)\n\n#twt <post/video url>\nDescription: download video Twitter\n\n*Other*\n#tnc\nDescription: show the Terms and Conditions`
             client.sendText(from, text)
             break
         }
@@ -150,7 +150,7 @@ async function msgHandler (client, message) {
             if (args.length !== 1) return client.reply(from, 'Maaf, link yang kamu kirim tidak valid', id)
             const url = args[0]
             if (!url.match(isUrl) && !url.includes('tiktok.com')) return client.reply(from, 'Maaf, link yang kamu kirim tidak valid', id)
-            await client.sendText(from, '*Scraping Metadata...*')
+            await client.sendText(from, 'sedang di proses')
             await tiktok(url)
                 .then((videoMeta) => {
                     const filename = videoMeta.authorMeta.name + '.mp4'
